@@ -3,7 +3,7 @@
   "name": "io.github.equinoxaifinance-rgb/fluxproof",
   "title": "FluxProof",
   "description": "Evidence-bearing public webpage monitoring with hashes, diffs, signed webhooks, REST, and MCP.",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "repository": {
     "url": "https://github.com/equinoxaifinance-rgb/fluxproof-agent-card",
     "source": "github"
