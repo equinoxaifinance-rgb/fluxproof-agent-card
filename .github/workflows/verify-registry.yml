@@ -1,0 +1,15 @@
+name: Verify public FluxProof registry entry
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch public registry entry without authentication
+        run: |
+          curl --fail --location --retry 3 --max-time 30 'https://registry.modelcontextprotocol.io/v0.1/servers?search=fluxproof' --output entry.json
+          cat entry.json
+          jq -e '.servers[] | select(.server.name == "io.github.equinoxaifinance-rgb/fluxproof") | select(.server.version == "0.1.0") | select(.server.remotes[0].url == "https://fluxproof.neoaethel.workers.dev/mcp")' entry.json
+          sha256sum entry.json
