@@ -10,6 +10,8 @@ Remote MCP endpoint: `https://fluxproof.neoaethel.workers.dev/mcp`
 
 Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
+[Launch guide](LAUNCH.md) · [Smithery listing](https://smithery.ai/servers/neoaethel/fluxproof) · [Glama connector](https://glama.ai/mcp/connectors/dev.workers.neoaethel.fluxproof/flux-proof)
+
 ## Why use it
 
 - Normalize scripts, styles, markup, and whitespace before comparison.
