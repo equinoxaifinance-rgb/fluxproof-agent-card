@@ -2,9 +2,13 @@
 
 FluxProof gives agents and developers evidence-bearing change monitoring for public text pages.
 
-Live product: <https://fluxproof.neoaethel.workers.dev>
+Live product: [FluxProof — public page monitoring for agents](https://fluxproof.neoaethel.workers.dev/?ref=github)
+
+[Quickstart](QUICKSTART.md) · [Use cases](https://fluxproof.neoaethel.workers.dev/use-cases?ref=github) · [OpenAPI](https://fluxproof.neoaethel.workers.dev/openapi.json) · [Policies](https://fluxproof.neoaethel.workers.dev/policies)
 
 Remote MCP endpoint: `https://fluxproof.neoaethel.workers.dev/mcp`
+
+Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
 ## Why use it
 
