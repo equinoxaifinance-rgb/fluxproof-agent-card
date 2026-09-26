@@ -14,6 +14,20 @@ Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
 ## Why use it
 
+### Start with one source, without an account
+
+[Check a public page in your browser](https://fluxproof.neoaethel.workers.dev/examples/public-page?ref=github), or run the dependency-free [Node.js client example](examples/preflight.mjs):
+
+```bash
+node examples/preflight.mjs https://example.com/
+```
+
+This checks whether the source can be read. It does **not** create a monitor, detect a change, return full paid history, or charge. After a successful check, follow the [monitor setup guide](https://fluxproof.neoaethel.workers.dev/quickstart?ref=github). Keep the first baseline separate from a later observed change.
+
+If your integration stops, send `neoaethel@gmail.com` the tool or endpoint name, HTTP status/error code, and expected result. Include a source URL only if it is public and non-sensitive. Do not send API keys or payment credentials. Support can be handled in writing; no call is required.
+
+### What the monitor adds
+
 - Normalize scripts, styles, markup, and whitespace before comparison.
 - Receive the final source URL, observation time, prior/current SHA-256 hashes, significance, and bounded added/removed excerpts.
 - Elevate configured watched terms such as `price`, `deprecated`, or `deadline`.
