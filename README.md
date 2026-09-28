@@ -6,6 +6,8 @@ Live product: [FluxProof — public page monitoring for agents](https://fluxproo
 
 [Quickstart](QUICKSTART.md) · [Use cases](https://fluxproof.neoaethel.workers.dev/use-cases?ref=github) · [OpenAPI](https://fluxproof.neoaethel.workers.dev/openapi.json) · [Policies](https://fluxproof.neoaethel.workers.dev/policies)
 
+n8n: [check one public source before creating a monitor](guides/n8n/README.md) with a bounded, MIT-licensed client workflow. No key, monitor creation or payment is included in this free preview.
+
 Remote MCP endpoint: `https://fluxproof.neoaethel.workers.dev/mcp`
 
 Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
@@ -53,5 +55,7 @@ FluxProof accepts public HTTP or HTTPS text, HTML, JSON, and XML responses up to
 ## Commercial and source boundary
 
 This repository contains discovery metadata and documentation only. It does not contain, license, or distribute the commercial engine. All rights are reserved. Buying access does not transfer source or redistribution rights.
+
+Narrow exception: the original client wrapper and guide in [`guides/n8n`](guides/n8n/README.md) are MIT licensed under that directory's [LICENSE](guides/n8n/LICENSE). This does not license the monitoring engine, hosted service, paid history, upstream data or other repository material.
 
 Support: `neoaethel@gmail.com`. Never email API keys, card data, passwords, or private URLs.
