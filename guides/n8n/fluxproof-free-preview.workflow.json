@@ -1,0 +1,144 @@
+{
+  "id": "N8NfluxRelease28",
+  "name": "FluxProof — free source preview and separate setup",
+  "active": false,
+  "versionId": "652c3d02-792d-49cc-9a47-aa00e77d9a88",
+  "nodes": [
+    {
+      "id": "manual",
+      "name": "Manual only",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "input",
+      "name": "Choose input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"url\": \"https://example.com/\"\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "request",
+      "name": "Free request only",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "parameters": {
+        "method": "POST",
+        "url": "https://fluxproof.neoaethel.workers.dev/v1/preflight",
+        "authentication": "none",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 20000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "text",
+              "outputPropertyName": "body"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "result",
+      "name": "Inspect result without purchasing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function mapPreview(response,input,now=Date.now()){\n const fail=(code,retryable=false)=>({schema:'fluxproof-n8n-preview.v1',state:'source_check_failed',code,retryable,monitorCreated:false,paymentAttempted:false,changeState:'not_observed',handoff:null});\n if(!response||response.error||!Number.isInteger(response.statusCode))return fail('transport_error',true);\n let b;try{b=typeof response.body==='string'?JSON.parse(response.body):response.body}catch{return fail('response_not_json')}\n if(!b||typeof b!=='object'||Array.isArray(b))return fail('response_contract_invalid');\n if(response.statusCode!==200)return {...fail(typeof b.error==='string'?b.error:'http_error',response.statusCode===429||response.statusCode>=500),httpStatus:response.statusCode};\n if(b.schema!=='fluxproof-preflight.v1'||b.fetchable!==true||b.content_included!==false||typeof b.final_url!=='string'||!/^https?:\\/\\/[^\\s/@?#]+(?:[/?#][^\\s]*)?$/.test(b.final_url)||!/^[a-f0-9]{64}$/.test(b.content_sha256||'')||!Number.isInteger(b.http_status)||b.http_status<200||b.http_status>299||!Number.isSafeInteger(b.bytes)||b.bytes<=0)return fail('response_contract_invalid');\n const observed=typeof b.observed_at==='string'?Date.parse(b.observed_at):NaN;\n if(!Number.isFinite(observed)||observed>now+60000||observed<now-900000)return fail('receipt_time_invalid');\n if('content' in b||'content_text' in b)return fail('unexpected_content');\n return {schema:'fluxproof-n8n-preview.v1',state:'source_readable_not_monitored',monitorCreated:false,paymentAttempted:false,changeState:'not_observed',submittedUrl:input.url,finalUrl:b.final_url,observedAt:b.observed_at,contentSha256:b.content_sha256,bytes:b.bytes,handoff:{url:'https://fluxproof.neoaethel.workers.dev/quickstart',automaticPurchase:false,instruction:'Choose a free key or explicitly authorized paid access separately. Create a baseline before interpreting changes. One preview is not monitor history; failed fetches never mean unchanged. Never paste keys into this recipe.'}};\n}\nconst rows=$input.all();if(rows.length!==1)throw new Error('Exactly one response required');return [{json:mapPreview(rows[0].json,$('Choose input').first().json),pairedItem:{item:0}}];"
+      }
+    },
+    {
+      "id": "notice",
+      "name": "Read before running",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -280
+      ],
+      "parameters": {
+        "content": "## FluxProof — free source preview and separate setup\nEdit grouped public inputs, then run manually. This makes one free request, not a purchase. Read the final typed result; a green execution indicator alone does not prove success. Failed checks never authorize the next step. No credentials, paid engine, automatic retry, schedule or webhook is included.\nOne preview is not a monitor or change history. A failed fetch is not unchanged.\nAttribution is unknown: no supported n8n campaign tag is assumed. Original bounded wrapper: MIT; hosted services, engines and paid access are excluded. Do not enter private links or secrets.",
+        "width": 900,
+        "height": 220
+      }
+    }
+  ],
+  "connections": {
+    "Manual only": {
+      "main": [
+        [
+          {
+            "node": "Choose input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose input": {
+      "main": [
+        [
+          {
+            "node": "Free request only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Free request only": {
+      "main": [
+        [
+          {
+            "node": "Inspect result without purchasing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": false,
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false
+  },
+  "pinData": {},
+  "tags": []
+}
