@@ -1,0 +1,54 @@
+{
+  "name": "FluxProof",
+  "description": "Evidence-bearing public webpage change monitoring for people and agents. Returns source URL, observation time, prior/current SHA-256 hashes and bounded added/removed excerpts when normalized text changes.",
+  "url": "https://fluxproof.neoaethel.workers.dev",
+  "version": "0.1.0",
+  "documentationUrl": "https://fluxproof.neoaethel.workers.dev/quickstart",
+  "provider": {
+    "organization": "FluxProof",
+    "url": "https://fluxproof.neoaethel.workers.dev"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {
+      "id": "preflight",
+      "name": "Free source preflight",
+      "description": "Checks whether a public page can be read and monitored. Creates no monitor, detects no change and never charges.",
+      "tags": ["monitoring", "preflight", "free"],
+      "examples": ["{\"url\":\"https://example.com/\"}"]
+    },
+    {
+      "id": "offer",
+      "name": "Current offer",
+      "description": "Returns the current free and paid offers and their limits. Never charges."
+    },
+    {
+      "id": "create-monitor",
+      "name": "Create a monitor",
+      "description": "Starts watching one public HTML, text, JSON or XML page up to 3 MB with optional watched terms. Requires the buyer's API key. The first observation is a baseline, not a change.",
+      "tags": ["monitoring", "change-detection", "webhooks"]
+    },
+    {
+      "id": "check-now",
+      "name": "Manual check",
+      "description": "Runs one manual check of an existing monitor. Requires the buyer's API key."
+    },
+    {
+      "id": "list-changes",
+      "name": "List observed changes",
+      "description": "Returns observed changes with prior/current hashes and bounded excerpts. Requires the buyer's API key."
+    }
+  ],
+  "interfaces": {
+    "mcp": "https://fluxproof.neoaethel.workers.dev/mcp",
+    "openapi": "https://fluxproof.neoaethel.workers.dev/openapi.json",
+    "llms": "https://fluxproof.neoaethel.workers.dev/llms.txt"
+  },
+  "limits": "Public pages only. No sign-in, CAPTCHA solving, JavaScript rendering, or native email/SMS alerts. A content hash binds observed text; it does not certify that the source is true.",
+  "status": "available"
+}
