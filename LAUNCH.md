@@ -26,4 +26,4 @@ A content hash binds the observed text; it does not certify the truth of the sou
 
 The engine and source remain private. This repository and release distribute documentation and discovery metadata only—not an installable engine or redistribution rights.
 
-Support: `the repo's GitHub issues page`. Do not send credentials, payment details or private URLs.
+Support: [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues). Do not post credentials, payment details or private URLs.

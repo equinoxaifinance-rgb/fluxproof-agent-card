@@ -26,7 +26,7 @@ node examples/preflight.mjs https://example.com/
 
 This checks whether the source can be read. It does **not** create a monitor, detect a change, return full paid history, or charge. After a successful check, follow the [monitor setup guide](https://fluxproof.neoaethel.workers.dev/quickstart?ref=github). Keep the first baseline separate from a later observed change.
 
-If your integration stops, send `the repo's GitHub issues page` the tool or endpoint name, HTTP status/error code, and expected result. Include a source URL only if it is public and non-sensitive. Do not send API keys or payment credentials. Support can be handled in writing; no call is required.
+If your integration stops, [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues) with the tool or endpoint name, HTTP status/error code, and expected result. Include a source URL only if it is public and non-sensitive. Do not post API keys or payment credentials.
 
 ### What the monitor adds
 
@@ -58,4 +58,4 @@ This repository's documentation, discovery metadata and examples are MIT license
 
 The MIT licence does not cover the FluxProof monitoring engine or the hosted service at `fluxproof.neoaethel.workers.dev`. Their source is not in this repository and is not licensed or distributed here; buying access does not transfer source or redistribution rights. Paid history, upstream data, credentials and account or payment rights keep their own terms.
 
-Support: `the repo's GitHub issues page`. Never email API keys, card data, passwords, or private URLs.
+Support: [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues). Never post API keys, card data, passwords, or private URLs.
