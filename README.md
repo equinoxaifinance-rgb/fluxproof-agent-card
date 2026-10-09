@@ -54,8 +54,8 @@ FluxProof accepts public HTTP or HTTPS text, HTML, JSON, and XML responses up to
 
 ## Commercial and source boundary
 
-This repository contains discovery metadata and documentation only. It does not contain, license, or distribute the commercial engine. All rights are reserved. Buying access does not transfer source or redistribution rights.
+This repository's documentation, discovery metadata and examples are MIT licensed under the root [LICENSE](LICENSE), so you can copy and adapt them freely. The n8n client wrapper and guide in [`guides/n8n`](guides/n8n/README.md) carry the same MIT licence.
 
-Narrow exception: the original client wrapper and guide in [`guides/n8n`](guides/n8n/README.md) are MIT licensed under that directory's [LICENSE](guides/n8n/LICENSE). This does not license the monitoring engine, hosted service, paid history, upstream data or other repository material.
+The MIT licence does not cover the FluxProof monitoring engine or the hosted service at `fluxproof.neoaethel.workers.dev`. Their source is not in this repository and is not licensed or distributed here; buying access does not transfer source or redistribution rights. Paid history, upstream data, credentials and account or payment rights keep their own terms.
 
 Support: `the repo's GitHub issues page`. Never email API keys, card data, passwords, or private URLs.
