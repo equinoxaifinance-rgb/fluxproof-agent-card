@@ -14,7 +14,7 @@ Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
 [Launch guide](LAUNCH.md) · [Agent card](.well-known/agent-card.json) · [Smithery listing](https://smithery.ai/servers/neoaethel/fluxproof) · [Glama connector](https://glama.ai/mcp/connectors/dev.workers.neoaethel.fluxproof/flux-proof)
 
-Agent skill: [`skills/watch-page-changes/SKILL.md`](skills/watch-page-changes/SKILL.md) teaches an agent when and how to watch a page with FluxProof.
+Agent skill: [`skills/watch-page-changes/SKILL.md`](skills/watch-page-changes/SKILL.md) teaches an agent when and how to watch a page with FluxProof. Install: `npx skills add equinoxaifinance-rgb/fluxproof-agent-card --skill watch-page-changes`.
 
 ## Why use it
 
