@@ -12,7 +12,7 @@ https://fluxproof.neoaethel.workers.dev/mcp
 
 Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
-Start with `fluxproof_preflight` using a public `url`, then `fluxproof_offer`. Neither tool charges. The three authenticated tools are `fluxproof_create_monitor`, `fluxproof_check_now`, and `fluxproof_list_changes`. They currently accept the buyer's `api_key` in tool arguments, so keep tool transcripts private and configure secret handling in your client.
+Start with `fluxproof_preflight` using a public `url`, then `fluxproof_offer`. Neither tool charges. `fluxproof_get_free_key` returns a free key (one page, checked daily for 30 days, no card), shown once. The three authenticated tools are `fluxproof_create_monitor`, `fluxproof_check_now`, and `fluxproof_list_changes`. They currently accept the buyer's `api_key` in tool arguments, so keep tool transcripts private and configure secret handling in your client.
 
 ## REST
 
