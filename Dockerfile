@@ -1,11 +1,13 @@
-# Runs FluxProof's hosted MCP server over stdio for MCP clients and
-# directory inspectors that start servers locally. All tools run on
-# https://fluxproof.tryneverclosed.com/mcp; this image only bridges to it.
 FROM node:22-alpine
 
-RUN npm install -g mcp-remote@0.14.3 \
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts \
     && npm cache clean --force
+
+COPY server.mjs tools.json glama.json README.md LICENSE ./
 
 USER node
 
-CMD ["mcp-remote", "https://fluxproof.tryneverclosed.com/mcp", "--transport", "http-only"]
+CMD ["node", "server.mjs"]

@@ -62,3 +62,11 @@ This repository's documentation, discovery metadata and examples are MIT license
 The MIT licence does not cover the FluxProof monitoring engine or the hosted service at `fluxproof.neoaethel.workers.dev`. Their source is not in this repository and is not licensed or distributed here; buying access does not transfer source or redistribution rights. Paid history, upstream data, credentials and account or payment rights keep their own terms.
 
 Support: [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues). Never post API keys, card data, passwords, or private URLs.
+
+## Local stdio client
+
+`server.mjs` is a small stdio MCP server for clients and directories that start servers locally. It lists the same six tools and sends every call to the hosted service at https://fluxproof.tryneverclosed.com/mcp; nothing runs or is stored locally. Set `FLUXPROOF_API_KEY` to send your key as a bearer token.
+
+```sh
+npm ci && node server.mjs
+```

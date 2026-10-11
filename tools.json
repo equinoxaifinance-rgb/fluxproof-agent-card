@@ -1,0 +1,171 @@
+[
+  {
+    "name": "fluxproof_preflight",
+    "title": "Check a public page (free)",
+    "description": "Fetch a public URL and return fetchability, size, final URL, title, and content hash without page content or payment. Start here before creating a monitor. Example: {\"url\":\"https://example.com/\"}.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Public HTTP(S) page URL. No sign-in, cookies, browser rendering or private-network targets."
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Check a public page (free)",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "fluxproof_get_free_key",
+    "title": "Get a free FluxProof key",
+    "description": "Create a free FluxProof API key: one page, checked daily, for 30 days, no card. One per network per month. Use after a successful preflight when the user wants the page watched, then pass the key to fluxproof_create_monitor. The key is shown once: give it to the user and treat it as a secret.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Get a free FluxProof key",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "fluxproof_offer",
+    "title": "Show the offer and prices",
+    "description": "Return free and paid boundaries and purchase routes without charging. Read this for the free daily plan, $9 paid pass, human checkout and agent payment route. Example: {}. A returned offer is not purchase authorization.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Show the offer and prices",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "fluxproof_create_monitor",
+    "title": "Create a page monitor",
+    "description": "Create a monitor using a buyer-owned FluxProof API key. Creates persistent state and performs a baseline check, consuming quota. Not idempotent; do not retry blindly after an uncertain result.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "api_key": {
+          "type": "string",
+          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+        },
+        "url": {
+          "type": "string",
+          "description": "Public HTTP(S) page URL. No sign-in, cookies, browser rendering or private-network targets."
+        },
+        "label": {
+          "type": "string",
+          "description": "Optional human-readable monitor label, up to 120 characters."
+        },
+        "interval_minutes": {
+          "type": "integer",
+          "description": "Requested schedule in minutes. Free keys use 1440 (daily); paid passes have a 15-minute minimum."
+        },
+        "watch_terms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional terms to track, each 2–80 characters; at most 20 distinct terms."
+        },
+        "webhook_url": {
+          "type": "string",
+          "description": "Optional public HTTPS webhook receiver; paid pass required. Delivery is signed and can occur when checks run."
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Create a page monitor",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "fluxproof_check_now",
+    "title": "Check a monitor now",
+    "description": "Run a monitor now and return a source- and hash-bound change receipt. Consumes check quota, stores a receipt and may deliver a configured webhook. Not an idempotent read.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "api_key": {
+          "type": "string",
+          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+        },
+        "monitor_id": {
+          "type": "string",
+          "description": "Exact monitor_id returned when this key created the monitor; another account cannot access it."
+        }
+      },
+      "required": [
+        "monitor_id"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Check a monitor now",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "fluxproof_list_changes",
+    "title": "List change receipts",
+    "description": "List recent evidence receipts for a monitor.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "api_key": {
+          "type": "string",
+          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+        },
+        "monitor_id": {
+          "type": "string",
+          "description": "Exact monitor_id returned when this key created the monitor; another account cannot access it."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum recent receipts requested; defaults to 20. History access is restricted by the key’s plan."
+        }
+      },
+      "required": [
+        "monitor_id"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "List change receipts",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  }
+]

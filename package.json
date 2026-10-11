@@ -1,0 +1,20 @@
+{
+  "name": "fluxproof-mcp-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local stdio MCP client for the hosted FluxProof service (https://fluxproof.tryneverclosed.com).",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "fluxproof-mcp": "server.mjs"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1"
+  }
+}
