@@ -43,6 +43,7 @@ If your integration stops, [open an issue](https://github.com/equinoxaifinance-r
 
 - Free: one public source, daily for 30 days, 30 scheduled checks including the baseline, five manual checks, latest receipt only, no webhook.
 - Monitor Pass: $9 once for 30 days, five sources, 14,400 scheduled checks at 15-minute cadence including baselines, 600 manual checks, full history, signed webhooks, REST, MCP, and agent payment support.
+- Evidence plans, each paid once for 30 days with no automatic renewal: Evidence Starter $29 (up to 25 pages checked every 6 hours) and Evidence Pro $99 (up to 150 pages checked hourly, plus signed webhooks). Both add price floors, bulk page lists and timestamped proof packets: the exact page bytes, a signed manifest and an RFC 3161 timestamp from an outside authority. Details: [evidence plans](https://fluxproof.neoaethel.workers.dev/evidence?ref=github).
 
 ## Verified scope
 

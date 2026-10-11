@@ -21,7 +21,7 @@ FluxProof is a hosted (remote) MCP server. There is nothing to download, build o
 
 3. Save the file. Cline connects and lists the server's tools.
 
-No API key is needed for the free tools. Creating paid monitors needs a Monitor Pass; see the [README](README.md).
+No API key is needed for the free tools. Paid monitors need a Monitor Pass or an evidence plan; see the [README](README.md).
 
 ## Other clients
 
