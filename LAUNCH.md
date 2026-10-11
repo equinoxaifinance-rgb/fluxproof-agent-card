@@ -8,15 +8,15 @@ Use it for public pricing pages, published policies and changelogs. Start by pre
 - **$9 once / 30 days:** five monitors, minimum 15-minute interval, 15,000 total checks, change history and timestamped HMAC-signed HTTPS webhooks. No auto-renewal.
 - **Integrations:** REST, five remote MCP tools, browser dashboard and buyer-authorized Stripe payment routes.
 
-[Try a public source](https://fluxproof.neoaethel.workers.dev/quickstart?ref=github) · [Coverage and policies](https://fluxproof.neoaethel.workers.dev/policies)
+[Try a public source](https://fluxproof.tryneverclosed.com/quickstart?ref=github) · [Coverage and policies](https://fluxproof.tryneverclosed.com/policies)
 
 ## Find and connect
 
-- Remote endpoint: `https://fluxproof.neoaethel.workers.dev/mcp`
+- Remote endpoint: `https://fluxproof.tryneverclosed.com/mcp`
 - Official MCP Registry identity: `io.github.equinoxaifinance-rgb/fluxproof`
 - [Smithery](https://smithery.ai/servers/neoaethel/fluxproof)
 - [Glama](https://glama.ai/mcp/connectors/dev.workers.neoaethel.fluxproof/flux-proof)
-- [OpenAPI](https://fluxproof.neoaethel.workers.dev/openapi.json) and [agent guide](https://fluxproof.neoaethel.workers.dev/llms.txt)
+- [OpenAPI](https://fluxproof.tryneverclosed.com/openapi.json) and [agent guide](https://fluxproof.tryneverclosed.com/llms.txt)
 
 Discovery, offer and preflight do not require a key or charge. Get a free key from the product website or `POST /v1/keys/free`. Monitoring tools accept your buyer-owned `api_key` argument: keep tool transcripts private. A purchase always requires the buyer's authority.
 

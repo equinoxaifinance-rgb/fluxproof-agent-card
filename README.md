@@ -2,13 +2,13 @@
 
 FluxProof gives agents and developers evidence-bearing change monitoring for public text pages.
 
-Live product: [FluxProof — public page monitoring for agents](https://fluxproof.neoaethel.workers.dev/?ref=github)
+Live product: [FluxProof — public page monitoring for agents](https://fluxproof.tryneverclosed.com/?ref=github)
 
-[Quickstart](QUICKSTART.md) · [Use cases](https://fluxproof.neoaethel.workers.dev/use-cases?ref=github) · [OpenAPI](https://fluxproof.neoaethel.workers.dev/openapi.json) · [Policies](https://fluxproof.neoaethel.workers.dev/policies)
+[Quickstart](QUICKSTART.md) · [Use cases](https://fluxproof.tryneverclosed.com/use-cases?ref=github) · [OpenAPI](https://fluxproof.tryneverclosed.com/openapi.json) · [Policies](https://fluxproof.tryneverclosed.com/policies)
 
 n8n: [check one public source before creating a monitor](guides/n8n/README.md) with a bounded, MIT-licensed client workflow. No key, monitor creation or payment is included in this free preview.
 
-Remote MCP endpoint: `https://fluxproof.neoaethel.workers.dev/mcp`
+Remote MCP endpoint: `https://fluxproof.tryneverclosed.com/mcp` (the original address `https://fluxproof.neoaethel.workers.dev/mcp` keeps working, and the MCP Registry entry still lists it)
 
 Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
@@ -20,13 +20,13 @@ Agent skill: [`skills/watch-page-changes/SKILL.md`](skills/watch-page-changes/SK
 
 ### Start with one source, without an account
 
-[Check a public page in your browser](https://fluxproof.neoaethel.workers.dev/examples/public-page?ref=github), or run the dependency-free [Node.js client example](examples/preflight.mjs):
+[Check a public page in your browser](https://fluxproof.tryneverclosed.com/examples/public-page?ref=github), or run the dependency-free [Node.js client example](examples/preflight.mjs):
 
 ```bash
 node examples/preflight.mjs https://example.com/
 ```
 
-This checks whether the source can be read. It does **not** create a monitor, detect a change, return full paid history, or charge. After a successful check, follow the [monitor setup guide](https://fluxproof.neoaethel.workers.dev/quickstart?ref=github). Keep the first baseline separate from a later observed change.
+This checks whether the source can be read. It does **not** create a monitor, detect a change, return full paid history, or charge. After a successful check, follow the [monitor setup guide](https://fluxproof.tryneverclosed.com/quickstart?ref=github). Keep the first baseline separate from a later observed change.
 
 If your integration stops, [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues) with the tool or endpoint name, HTTP status/error code, and expected result. Include a source URL only if it is public and non-sensitive. Do not post API keys or payment credentials.
 
@@ -36,14 +36,14 @@ If your integration stops, [open an issue](https://github.com/equinoxaifinance-r
 - Receive the final source URL, observation time, prior/current SHA-256 hashes, significance, and bounded added/removed excerpts.
 - Elevate configured watched terms such as `price`, `deprecated`, or `deadline`.
 - Deliver changes through timestamped HMAC-SHA256 signed HTTPS webhooks.
-- Discover and operate five tools through MCP, or use the REST API directly.
+- Discover and operate six tools through MCP, or use the REST API directly.
 - Let an authorized agent receive a standard HTTP 402 Stripe payment challenge; discovery and preflight never charge.
 
 ## Offers
 
 - Free: one public source, daily for 30 days, 30 scheduled checks including the baseline, five manual checks, latest receipt only, no webhook.
 - Monitor Pass: $9 once for 30 days, five sources, 14,400 scheduled checks at 15-minute cadence including baselines, 600 manual checks, full history, signed webhooks, REST, MCP, and agent payment support.
-- Evidence plans, monthly, cancel any time: Evidence Starter $29 a month (up to 25 pages checked every 6 hours) and Evidence Pro $99 a month (up to 150 pages checked hourly, plus signed webhooks). Both add price floors with email alerts, bulk page lists and timestamped proof packets: the exact page bytes, a signed manifest and an RFC 3161 timestamp from an outside authority. Details: [evidence plans](https://fluxproof.neoaethel.workers.dev/evidence?ref=github).
+- Evidence plans, monthly, cancel any time: Evidence Starter $29 a month (up to 25 pages checked every 6 hours) and Evidence Pro $99 a month (up to 150 pages checked hourly, plus signed webhooks). Both add price floors with email alerts, bulk page lists and timestamped proof packets: the exact page bytes, a signed manifest and an RFC 3161 timestamp from an outside authority. Details: [evidence plans](https://fluxproof.tryneverclosed.com/evidence?ref=github).
 
 ## Verified scope
 
@@ -59,7 +59,7 @@ FluxProof accepts public HTTP or HTTPS text, HTML, JSON, and XML responses up to
 
 This repository's documentation, discovery metadata and examples are MIT licensed under the root [LICENSE](LICENSE), so you can copy and adapt them freely. The n8n client wrapper and guide in [`guides/n8n`](guides/n8n/README.md) carry the same MIT licence.
 
-The MIT licence does not cover the FluxProof monitoring engine or the hosted service at `fluxproof.neoaethel.workers.dev`. Their source is not in this repository and is not licensed or distributed here; buying access does not transfer source or redistribution rights. Paid history, upstream data, credentials and account or payment rights keep their own terms.
+The MIT licence does not cover the FluxProof monitoring engine or the hosted service at `fluxproof.tryneverclosed.com`. Their source is not in this repository and is not licensed or distributed here; buying access does not transfer source or redistribution rights. Paid history, upstream data, credentials and account or payment rights keep their own terms.
 
 Support: [open an issue](https://github.com/equinoxaifinance-rgb/fluxproof-agent-card/issues). Never post API keys, card data, passwords, or private URLs.
 

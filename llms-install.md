@@ -12,7 +12,7 @@ FluxProof is a hosted (remote) MCP server. There is nothing to download, build o
   "mcpServers": {
     "fluxproof": {
       "type": "streamableHttp",
-      "url": "https://fluxproof.neoaethel.workers.dev/mcp",
+      "url": "https://fluxproof.tryneverclosed.com/mcp",
       "disabled": false
     }
   }
@@ -25,8 +25,8 @@ No API key is needed for the free tools. Paid monitors need a Monitor Pass or an
 
 ## Other clients
 
-- Claude Code: `claude mcp add --transport http fluxproof https://fluxproof.neoaethel.workers.dev/mcp`
-- Any client that supports Streamable HTTP: point it at `https://fluxproof.neoaethel.workers.dev/mcp`.
+- Claude Code: `claude mcp add --transport http fluxproof https://fluxproof.tryneverclosed.com/mcp`
+- Any client that supports Streamable HTTP: point it at `https://fluxproof.tryneverclosed.com/mcp`.
 
 ## Check it works
 
