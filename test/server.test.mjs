@@ -25,3 +25,12 @@ test("reports hosted errors as tool errors", async () => {
   const result = await callHosted("fluxproof_offer", {}, { fetchImpl });
   assert.equal(result.isError, true);
 });
+
+test("lists the hosted tools, or the bundled copy when offline", async () => {
+  const { listTools } = await import("../server.mjs");
+  const hosted = [{ name: "x", inputSchema: { type: "object" } }];
+  const online = async () => new Response(JSON.stringify({ jsonrpc: "2.0", id: 1, result: { tools: hosted } }), { status: 200 });
+  assert.deepEqual(await listTools({ fetchImpl: online }), hosted);
+  const offline = async () => { throw new Error("offline"); };
+  assert.equal((await listTools({ fetchImpl: offline })).length, 6);
+});

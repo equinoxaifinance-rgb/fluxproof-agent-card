@@ -30,9 +30,25 @@ export async function callHosted(name, args, { fetchImpl = fetch, apiKey = proce
   return payload.result;
 }
 
+// Prefer the hosted service's current tool list so titles and descriptions stay
+// in sync; fall back to the bundled copy when the service can't be reached.
+export async function listTools({ fetchImpl = fetch } = {}) {
+  try {
+    const response = await fetchImpl(`${BASE_URL}/mcp`, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "tools/list" }),
+      signal: AbortSignal.timeout(5_000),
+    });
+    const tools = (await response.json())?.result?.tools;
+    if (response.ok && Array.isArray(tools) && tools.length) return tools;
+  } catch {}
+  return TOOLS;
+}
+
 export function createServer(options = {}) {
   const server = new Server({ name: "fluxproof", version: "0.1.0" }, { capabilities: { tools: {} } });
-  server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOLS }));
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: await listTools(options) }));
   server.setRequestHandler(CallToolRequestSchema, async (request) =>
     callHosted(request.params.name, request.params.arguments, options));
   return server;

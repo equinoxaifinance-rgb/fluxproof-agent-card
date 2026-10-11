@@ -26,7 +26,7 @@
   },
   {
     "name": "fluxproof_get_free_key",
-    "title": "Get a free FluxProof key",
+    "title": "Get a free API key",
     "description": "Create a free FluxProof API key: one page, checked daily, for 30 days, no card. One per network per month. Use after a successful preflight when the user wants the page watched, then pass the key to fluxproof_create_monitor. The key is shown once: give it to the user and treat it as a secret.",
     "inputSchema": {
       "type": "object",
@@ -34,7 +34,7 @@
       "additionalProperties": false
     },
     "annotations": {
-      "title": "Get a free FluxProof key",
+      "title": "Get a free API key",
       "readOnlyHint": false,
       "destructiveHint": false,
       "idempotentHint": false,
@@ -43,7 +43,7 @@
   },
   {
     "name": "fluxproof_offer",
-    "title": "Show the offer and prices",
+    "title": "Show plans and prices",
     "description": "Return free and paid boundaries and purchase routes without charging. Read this for the free daily plan, $9 paid pass, human checkout and agent payment route. Example: {}. A returned offer is not purchase authorization.",
     "inputSchema": {
       "type": "object",
@@ -51,7 +51,7 @@
       "additionalProperties": false
     },
     "annotations": {
-      "title": "Show the offer and prices",
+      "title": "Show plans and prices",
       "readOnlyHint": true,
       "destructiveHint": false,
       "idempotentHint": true,
@@ -60,7 +60,7 @@
   },
   {
     "name": "fluxproof_create_monitor",
-    "title": "Create a page monitor",
+    "title": "Start watching a page",
     "description": "Create a monitor using a buyer-owned FluxProof API key. Creates persistent state and performs a baseline check, consuming quota. Not idempotent; do not retry blindly after an uncertain result.",
     "inputSchema": {
       "type": "object",
@@ -86,7 +86,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Optional terms to track, each 2–80 characters; at most 20 distinct terms."
+          "description": "Optional terms to track, each 2\u201380 characters; at most 20 distinct terms."
         },
         "webhook_url": {
           "type": "string",
@@ -99,7 +99,7 @@
       "additionalProperties": false
     },
     "annotations": {
-      "title": "Create a page monitor",
+      "title": "Start watching a page",
       "readOnlyHint": false,
       "destructiveHint": false,
       "idempotentHint": false,
@@ -108,7 +108,7 @@
   },
   {
     "name": "fluxproof_check_now",
-    "title": "Check a monitor now",
+    "title": "Check a watched page now",
     "description": "Run a monitor now and return a source- and hash-bound change receipt. Consumes check quota, stores a receipt and may deliver a configured webhook. Not an idempotent read.",
     "inputSchema": {
       "type": "object",
@@ -128,7 +128,7 @@
       "additionalProperties": false
     },
     "annotations": {
-      "title": "Check a monitor now",
+      "title": "Check a watched page now",
       "readOnlyHint": false,
       "destructiveHint": false,
       "idempotentHint": false,
@@ -137,7 +137,7 @@
   },
   {
     "name": "fluxproof_list_changes",
-    "title": "List change receipts",
+    "title": "List recorded changes",
     "description": "List recent evidence receipts for a monitor.",
     "inputSchema": {
       "type": "object",
@@ -152,7 +152,7 @@
         },
         "limit": {
           "type": "integer",
-          "description": "Maximum recent receipts requested; defaults to 20. History access is restricted by the key’s plan."
+          "description": "Maximum recent receipts requested; defaults to 20. History access is restricted by the key\u2019s plan."
         }
       },
       "required": [
@@ -161,7 +161,7 @@
       "additionalProperties": false
     },
     "annotations": {
-      "title": "List change receipts",
+      "title": "List recorded changes",
       "readOnlyHint": true,
       "destructiveHint": false,
       "idempotentHint": true,
