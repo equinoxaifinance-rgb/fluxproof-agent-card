@@ -6,7 +6,8 @@ Use it for public pricing pages, published policies and changelogs. Start by pre
 
 - **Free:** one daily monitor for 30 days, 35 total checks including the baseline, latest receipt, no webhook.
 - **$9 once / 30 days:** five monitors, minimum 15-minute interval, 15,000 total checks, change history and timestamped HMAC-signed HTTPS webhooks. No auto-renewal.
-- **Integrations:** REST, five remote MCP tools, browser dashboard and buyer-authorized Stripe payment routes.
+- **Evidence plans, monthly:** Evidence Starter $29 a month (up to 25 pages every 6 hours) and Evidence Pro $99 a month (up to 150 pages hourly, plus signed webhooks), with price floors and email alerts. [Details](https://fluxproof.tryneverclosed.com/evidence?ref=github).
+- **Integrations:** REST, six remote MCP tools at `/mcp` (five on the Claude connector at `/claude/mcp`), browser dashboard and buyer-authorized Stripe payment routes.
 
 [Try a public source](https://fluxproof.tryneverclosed.com/quickstart?ref=github) · [Coverage and policies](https://fluxproof.tryneverclosed.com/policies)
 
@@ -22,7 +23,7 @@ Discovery, offer and preflight do not require a key or charge. Get a free key fr
 
 ## What the evidence does—and does not—mean
 
-A content hash binds the observed text; it does not certify the truth of the source. Significance is a configured text signal, not a guarantee of business importance. Coverage is public HTML/text/JSON/XML up to 3 MB. There is no JavaScript rendering, sign-in/CAPTCHA bypass, or native email/SMS alerting.
+A content hash binds the observed text; it does not certify the truth of the source. Significance is a configured text signal, not a guarantee of business importance. Coverage is public HTML/text/JSON/XML up to 3 MB. There is no JavaScript rendering or sign-in/CAPTCHA bypass. Free and Monitor Pass deliver by dashboard, webhook, REST and MCP; Evidence plans also send email alerts; there is no SMS or mobile push.
 
 The engine and source remain private. This repository and release distribute documentation and discovery metadata only—not an installable engine or redistribution rights.
 

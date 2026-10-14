@@ -1,6 +1,6 @@
 # FluxProof
 
-FluxProof gives agents and developers evidence-bearing change monitoring for public text pages.
+FluxProof watches public pricing, policy and changelog pages and tells you, with the source URL and before/after excerpts, when the text changes. By Neverclosed (https://tryneverclosed.com).
 
 Live product: [FluxProof — public page monitoring for agents](https://fluxproof.tryneverclosed.com/?ref=github)
 
@@ -47,13 +47,11 @@ If your integration stops, [open an issue](https://github.com/equinoxaifinance-r
 
 ## Verified scope
 
-The 2026-09-08 production trial verified a controlled no-change, a watched price change, independent webhook receipt and HMAC verification, D1 persistence, five live MCP tools, Stripe's HTTP 402 agent-payment challenge without a charge, and a Stripe-hosted human checkout redirect without a self-purchase. A separate production corpus fetched and hashed 10/10 current competitor, pricing, changelog, model-catalog, and US regulatory pages.
-
-These receipts establish the technical path, not customer demand, universal page coverage, or business importance.
+Tested end to end in production (2026-09-08): change detection, signed webhook delivery and Stripe checkout.
 
 ## Boundaries
 
-FluxProof accepts public HTTP or HTTPS text, HTML, JSON, and XML responses up to 3 MB. It does not sign in, solve bot challenges, render JavaScript-only pages in a browser, or provide native email/SMS/mobile notifications. Mature general-purpose monitors remain stronger for browser automation, notification breadth, and raw monitor count.
+FluxProof accepts public HTTP or HTTPS text, HTML, JSON, and XML responses up to 3 MB. It does not sign in, solve bot challenges, or render JavaScript-only pages in a browser. Free and Monitor Pass deliver by dashboard, webhook, REST and MCP; Evidence plans also send email alerts; there is no SMS or mobile push. Mature general-purpose monitors remain stronger for browser automation, notification breadth, and raw monitor count.
 
 ## Commercial and source boundary
 
