@@ -8,7 +8,7 @@ Live product: [FluxProof — public page monitoring for agents](https://fluxproo
 
 n8n: [check one public source before creating a monitor](guides/n8n/README.md) with a bounded, MIT-licensed client workflow. No key, monitor creation or payment is included in this free preview.
 
-Remote MCP endpoint: `https://fluxproof.tryneverclosed.com/mcp` (the original address `https://fluxproof.neoaethel.workers.dev/mcp` keeps working, and the MCP Registry entry still lists it)
+Remote MCP endpoint: `https://fluxproof.tryneverclosed.com/mcp` (the original address `https://fluxproof.neoaethel.workers.dev/mcp` keeps working)
 
 Server identity: `io.github.equinoxaifinance-rgb/fluxproof`, version `0.1.0`.
 
