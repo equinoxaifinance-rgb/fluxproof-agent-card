@@ -1,6 +1,6 @@
 # Preview one public source in n8n
 
-[Download the workflow](fluxproof-free-preview.workflow.json). It sends one public URL to FluxProof's free metadata preflight, validates the reply and returns a separate [monitor setup route](https://fluxproof.tryneverclosed.com/quickstart). No key or payment is required for the preview. No monitor is created.
+[Download the workflow](fluxproof-free-preview.workflow.json). It sends one public URL to FluxProof's free metadata preflight, validates the reply and returns a separate [monitor setup route](https://fluxproof.steellantern.com/quickstart). No key or payment is required for the preview. No monitor is created.
 
 ## Import and run
 
@@ -24,7 +24,7 @@ The exact artifact imported/exported with the same executable graph in n8n 2.40.
 
 These are CLI/runtime and code checks, not an n8n directory certification. Editor-canvas inspection remains uncompleted: a clean instance opened owner setup and no account credentials were created. After authorized owner setup, verify the written editor import path visually. For self-hosting, use the official [n8n setup guide](https://docs.n8n.io/deploy/host-n8n/install-options/install-with-npm), a new private user folder, and loopback-only editor/broker listeners; do not expose a public tunnel. Node 25 and n8n 3 are not this tested baseline.
 
-See the live [API contract](https://fluxproof.tryneverclosed.com/openapi.json) for current service behavior and limits. This preview does not prove monitor history, webhook delivery or paid fulfillment.
+See the live [API contract](https://fluxproof.steellantern.com/openapi.json) for current service behavior and limits. This preview does not prove monitor history, webhook delivery or paid fulfillment.
 
 ## License
 

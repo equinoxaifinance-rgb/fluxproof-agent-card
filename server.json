@@ -3,16 +3,16 @@
   "name": "io.github.equinoxaifinance-rgb/fluxproof",
   "title": "FluxProof",
   "description": "Evidence-bearing public webpage monitoring with hashes, diffs, signed webhooks, REST, and MCP.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": {
     "url": "https://github.com/equinoxaifinance-rgb/fluxproof-agent-card",
     "source": "github"
   },
-  "websiteUrl": "https://fluxproof.tryneverclosed.com",
+  "websiteUrl": "https://fluxproof.steellantern.com",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://fluxproof.tryneverclosed.com/mcp"
+      "url": "https://fluxproof.steellantern.com/mcp"
     }
   ]
 }

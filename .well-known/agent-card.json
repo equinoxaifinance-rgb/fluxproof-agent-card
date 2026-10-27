@@ -1,12 +1,12 @@
 {
   "name": "FluxProof",
   "description": "Evidence-bearing public webpage change monitoring for people and agents. Returns source URL, observation time, prior/current SHA-256 hashes and bounded added/removed excerpts when normalized text changes.",
-  "url": "https://fluxproof.tryneverclosed.com",
+  "url": "https://fluxproof.steellantern.com",
   "version": "0.1.0",
-  "documentationUrl": "https://fluxproof.tryneverclosed.com/quickstart",
+  "documentationUrl": "https://fluxproof.steellantern.com/quickstart",
   "provider": {
     "organization": "FluxProof",
-    "url": "https://fluxproof.tryneverclosed.com"
+    "url": "https://fluxproof.steellantern.com"
   },
   "capabilities": {
     "streaming": false,
@@ -45,9 +45,9 @@
     }
   ],
   "interfaces": {
-    "mcp": "https://fluxproof.tryneverclosed.com/mcp",
-    "openapi": "https://fluxproof.tryneverclosed.com/openapi.json",
-    "llms": "https://fluxproof.tryneverclosed.com/llms.txt"
+    "mcp": "https://fluxproof.steellantern.com/mcp",
+    "openapi": "https://fluxproof.steellantern.com/openapi.json",
+    "llms": "https://fluxproof.steellantern.com/llms.txt"
   },
   "limits": "Public pages only. No sign-in, CAPTCHA solving, JavaScript rendering, or SMS/mobile push alerts (email alerts are on Evidence plans only). A content hash binds observed text; it does not certify that the source is true.",
   "status": "available"

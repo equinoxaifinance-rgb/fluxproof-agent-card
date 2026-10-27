@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Local stdio MCP client for the hosted FluxProof service (https://fluxproof.tryneverclosed.com).",
+  "description": "Local stdio MCP client for the hosted FluxProof service (https://fluxproof.steellantern.com).",
   "engines": {
     "node": ">=22"
   },

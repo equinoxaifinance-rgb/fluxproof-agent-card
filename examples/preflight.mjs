@@ -6,7 +6,7 @@ export async function inspectSource(input, fetchImpl = fetch) {
   if (!['http:', 'https:'].includes(source.protocol) || source.username || source.password) {
     throw new Error('Use a public HTTP(S) URL without credentials.');
   }
-  const response = await fetchImpl('https://fluxproof.tryneverclosed.com/v1/preflight?ref=github', {
+  const response = await fetchImpl('https://fluxproof.steellantern.com/v1/preflight?ref=github', {
     method: 'POST', headers: {'content-type': 'application/json'},
     body: JSON.stringify({url:source.href}), signal: AbortSignal.timeout(20000)
   });
@@ -20,7 +20,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   try {
     if (!process.argv[2]) throw new Error('Usage: node examples/preflight.mjs https://example.com/');
     const result = await inspectSource(process.argv[2]);
-    console.log(JSON.stringify({status:'source_readable',metadata:result,next:'https://fluxproof.tryneverclosed.com/quickstart?ref=github',notice:'No monitor created and no payment made. A source check is not a change alert.'},null,2));
+    console.log(JSON.stringify({status:'source_readable',metadata:result,next:'https://fluxproof.steellantern.com/quickstart?ref=github',notice:'No monitor created and no payment made. A source check is not a change alert.'},null,2));
   } catch (error) {
     console.error(error instanceof TypeError ? 'Invalid URL or network failure; check the URL and retry.' : error.message);
     process.exitCode = 1;

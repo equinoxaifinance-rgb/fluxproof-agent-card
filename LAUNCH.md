@@ -6,18 +6,18 @@ Use it for public pricing pages, published policies and changelogs. Start by pre
 
 - **Free:** one daily monitor for 30 days, 35 total checks including the baseline, latest receipt, no webhook.
 - **$9 once / 30 days:** five monitors, minimum 15-minute interval, 15,000 total checks, change history and timestamped HMAC-signed HTTPS webhooks. No auto-renewal.
-- **Evidence plans, monthly:** Evidence Starter $29 a month (up to 25 pages every 6 hours) and Evidence Pro $99 a month (up to 150 pages hourly, plus signed webhooks), with price floors and email alerts. [Details](https://fluxproof.tryneverclosed.com/evidence?ref=github).
+- **Evidence plans, monthly:** Evidence Starter $29 a month (up to 25 pages every 6 hours) and Evidence Pro $99 a month (up to 150 pages hourly, plus signed webhooks), with price floors and email alerts. [Details](https://fluxproof.steellantern.com/evidence?ref=github).
 - **Integrations:** REST, six remote MCP tools at `/mcp` (five on the Claude connector at `/claude/mcp`), browser dashboard and buyer-authorized Stripe payment routes.
 
-[Try a public source](https://fluxproof.tryneverclosed.com/quickstart?ref=github) · [Coverage and policies](https://fluxproof.tryneverclosed.com/policies)
+[Try a public source](https://fluxproof.steellantern.com/quickstart?ref=github) · [Coverage and policies](https://fluxproof.steellantern.com/policies)
 
 ## Find and connect
 
-- Remote endpoint: `https://fluxproof.tryneverclosed.com/mcp`
+- Remote endpoint: `https://fluxproof.steellantern.com/mcp`
 - Official MCP Registry identity: `io.github.equinoxaifinance-rgb/fluxproof`
 - [Smithery](https://smithery.ai/servers/neoaethel/fluxproof)
 - [Glama](https://glama.ai/mcp/connectors/dev.workers.neoaethel.fluxproof/flux-proof)
-- [OpenAPI](https://fluxproof.tryneverclosed.com/openapi.json) and [agent guide](https://fluxproof.tryneverclosed.com/llms.txt)
+- [OpenAPI](https://fluxproof.steellantern.com/openapi.json) and [agent guide](https://fluxproof.steellantern.com/llms.txt)
 
 Discovery, offer and preflight do not require a key or charge. Get a free key from the product website or `POST /v1/keys/free`. Monitoring tools accept your buyer-owned `api_key` argument: keep tool transcripts private. A purchase always requires the buyer's authority.
 

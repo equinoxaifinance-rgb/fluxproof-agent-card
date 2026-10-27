@@ -10,7 +10,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprot
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
-export const BASE_URL = (process.env.FLUXPROOF_BASE_URL || "https://fluxproof.tryneverclosed.com").replace(/\/+$/u, "");
+export const BASE_URL = (process.env.FLUXPROOF_BASE_URL || "https://fluxproof.steellantern.com").replace(/\/+$/u, "");
 const TOOLS = JSON.parse(await readFile(new URL("./tools.json", import.meta.url), "utf8"));
 const TOOL_NAMES = new Set(TOOLS.map((tool) => tool.name));
 
