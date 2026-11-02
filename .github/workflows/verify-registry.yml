@@ -16,5 +16,6 @@ jobs:
           curl --fail --location --retry 3 --max-time 30 'https://registry.modelcontextprotocol.io/v0.1/servers?search=fluxproof' --output entry.json
           cat entry.json
           version="$(jq -r .version server.json)"
-          jq -e --arg version "$version" '.servers[] | select(.server.name == "io.github.equinoxaifinance-rgb/fluxproof") | select(.server.version == $version) | select(.server.remotes[0].url == "https://fluxproof.tryneverclosed.com/mcp")' entry.json
+          remote_url="$(jq -er '.remotes[0].url | select(type == "string" and length > 0)' server.json)"
+          jq -e --arg version "$version" --arg remote_url "$remote_url" '.servers[] | select(.server.name == "io.github.equinoxaifinance-rgb/fluxproof") | select(.server.version == $version) | select(.server.remotes[0].url == $remote_url)' entry.json
           sha256sum entry.json
