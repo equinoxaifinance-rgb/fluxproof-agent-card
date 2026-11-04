@@ -1,14 +1,13 @@
 [
   {
     "name": "fluxproof_preflight",
-    "title": "Check a public page (free)",
-    "description": "Fetch a public URL and return fetchability, size, final URL, title, and content hash without page content or payment. Start here before creating a monitor. Example: {\"url\":\"https://example.com/\"}.",
+    "description": "Fetch a public URL and return fetchability, size, final URL, title, and content hash without page content or payment. How it works: given one public page address, FluxProof fetches it once and says whether it can watch it; nothing is created or charged. Example: {\"url\":\"https://example.com/\"}.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "url": {
           "type": "string",
-          "description": "Public HTTP(S) page URL. No sign-in, cookies, browser rendering or private-network targets."
+          "description": "Required: the full address of one public web page, for example https://example.com/ or https://store.example.com/products/item; a bare domain such as example.com also works. Not a search phrase, product name or placeholder. No sign-in, cookies, browser rendering or private-network targets."
         }
       },
       "required": [
@@ -22,12 +21,12 @@
       "destructiveHint": false,
       "idempotentHint": true,
       "openWorldHint": true
-    }
+    },
+    "title": "Check a public page (free)"
   },
   {
     "name": "fluxproof_get_free_key",
-    "title": "Get a free API key",
-    "description": "Create a free FluxProof API key: one page, checked daily, for 30 days, no card. One per network per month. Use after a successful preflight when the user wants the page watched, then pass the key to fluxproof_create_monitor. The key is shown once: give it to the user and treat it as a secret.",
+    "description": "Create a free FluxProof API key: one page, checked daily, for 30 days, no card. One per internet connection (IP address) per month. The key is returned once and is a secret credential.",
     "inputSchema": {
       "type": "object",
       "properties": {},
@@ -39,12 +38,12 @@
       "destructiveHint": false,
       "idempotentHint": false,
       "openWorldHint": false
-    }
+    },
+    "title": "Get a free API key"
   },
   {
     "name": "fluxproof_offer",
-    "title": "Show plans and prices",
-    "description": "Return free and paid boundaries and purchase routes without charging. Read this for the free daily plan, $9 paid pass, human checkout and agent payment route. Example: {}. A returned offer is not purchase authorization.",
+    "description": "Return free and paid boundaries and purchase routes without charging. Returns the free daily plan, the $9 paid pass (30 days paid once; when offered, also $9 a month through the human checkout, cancel any time), the human checkout link and the agent payment route. Example: {}. Reading the offer charges nothing.",
     "inputSchema": {
       "type": "object",
       "properties": {},
@@ -56,22 +55,22 @@
       "destructiveHint": false,
       "idempotentHint": true,
       "openWorldHint": false
-    }
+    },
+    "title": "Show plans and prices"
   },
   {
     "name": "fluxproof_create_monitor",
-    "title": "Start watching a page",
-    "description": "Create a monitor using a buyer-owned FluxProof API key. Creates persistent state and performs a baseline check, consuming quota. Not idempotent; do not retry blindly after an uncertain result.",
+    "description": "Create a monitor using a buyer-owned FluxProof API key. Creates persistent state and performs a baseline check, consuming quota. Not idempotent: each call creates a new monitor.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "api_key": {
           "type": "string",
-          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+          "description": "Buyer-owned FluxProof API key; a secret credential."
         },
         "url": {
           "type": "string",
-          "description": "Public HTTP(S) page URL. No sign-in, cookies, browser rendering or private-network targets."
+          "description": "Required: the full address of one public web page, for example https://example.com/ or https://store.example.com/products/item; a bare domain such as example.com also works. Not a search phrase, product name or placeholder. No sign-in, cookies, browser rendering or private-network targets."
         },
         "label": {
           "type": "string",
@@ -86,11 +85,43 @@
           "items": {
             "type": "string"
           },
-          "description": "Optional terms to track, each 2\u201380 characters; at most 20 distinct terms."
+          "description": "Optional terms to track, each 2–80 characters; at most 20 distinct terms."
         },
         "webhook_url": {
           "type": "string",
-          "description": "Optional public HTTPS webhook receiver; paid pass required. Delivery is signed and can occur when checks run."
+          "description": "Optional public HTTPS webhook receiver; paid pass required. Delivery is signed and can occur when checks run. A Slack or Discord incoming-webhook address gets a readable chat message instead of the JSON payload."
+        },
+        "part": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "lines": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start"
+          ],
+          "additionalProperties": false,
+          "description": "Optional: watch only part of the page. start is text on the first line of the part (2–120 characters, any case); end is text on its last line, or lines (1–200, default 20) sets its length. Only that part is compared; the saved copy is still the whole page."
+        },
+        "alert_when": {
+          "type": "object",
+          "properties": {
+            "contains": {
+              "type": "string"
+            },
+            "missing": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Optional conditions on the watched part: contains (alert when this text appears) and/or missing (alert when this text disappears), 2–120 characters each. A condition that becomes true is a high-significance change."
         }
       },
       "required": [
@@ -104,18 +135,18 @@
       "destructiveHint": false,
       "idempotentHint": false,
       "openWorldHint": true
-    }
+    },
+    "title": "Start watching a page"
   },
   {
     "name": "fluxproof_check_now",
-    "title": "Check a watched page now",
     "description": "Run a monitor now and return a source- and hash-bound change receipt. Consumes check quota, stores a receipt and may deliver a configured webhook. Not an idempotent read.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "api_key": {
           "type": "string",
-          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+          "description": "Buyer-owned FluxProof API key; a secret credential."
         },
         "monitor_id": {
           "type": "string",
@@ -133,18 +164,18 @@
       "destructiveHint": false,
       "idempotentHint": false,
       "openWorldHint": true
-    }
+    },
+    "title": "Check a watched page now"
   },
   {
     "name": "fluxproof_list_changes",
-    "title": "List recorded changes",
     "description": "List recent evidence receipts for a monitor.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "api_key": {
           "type": "string",
-          "description": "Buyer-owned FluxProof API key. Treat as a secret: do not include in transcripts, public logs or support messages."
+          "description": "Buyer-owned FluxProof API key; a secret credential."
         },
         "monitor_id": {
           "type": "string",
@@ -152,7 +183,7 @@
         },
         "limit": {
           "type": "integer",
-          "description": "Maximum recent receipts requested; defaults to 20. History access is restricted by the key\u2019s plan."
+          "description": "Maximum recent receipts requested; defaults to 20. History access is restricted by the key’s plan."
         }
       },
       "required": [
@@ -166,6 +197,7 @@
       "destructiveHint": false,
       "idempotentHint": true,
       "openWorldHint": false
-    }
+    },
+    "title": "List recorded changes"
   }
 ]
